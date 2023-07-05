@@ -28,9 +28,9 @@ def predict_spam(text_input: TextInput):
     vec=cv.transform(data).toarray()
     result=model.predict(vec)
     if result[0]==0:
-        return {"prediction": "This is not spam email"}
+        return {"prediction": "Ham"}
     else:
-        return {"prediction": "This is a spam email"}
+        return {"prediction": "Spam"}
 
 
 if __name__ == "__main__":
