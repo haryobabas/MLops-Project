@@ -1,16 +1,16 @@
 import pytest
-import requests
+from fastapi.testclient import TestClient
 
 from main import app, TextInput
 
 
 @pytest.fixture(scope="module")
-def api_url():
-    return "http://localhost:8080"
+def client():
+    return TestClient(app)
 
 
-def test_index(api_url):
-    response = requests.get(api_url)
+def test_index(client):
+    response = client.get("/")
     assert response.status_code == 200
     assert response.json() == {
         "status": {
@@ -18,20 +18,38 @@ def test_index(api_url):
             "message": "Success fetching the API"
         }
     }
-def test_predict_ham(api_url):
+
+
+def test_predict_ham(client):
     input_data = {"text": "This is a test email"}
-    response = requests.post(f"{api_url}/predict", json=input_data)
+    response = client.post("/predict", json=input_data)
     assert response.status_code == 200
     assert response.json() == {"prediction": "Ham"}
 
-def test_predict_spam(api_url):
-    input_data = {"text": "This is promotion email to get discount"}
-    response = requests.post(f"{api_url}/predict", json=input_data)
+
+def test_predict_spam(client):
+    input_data = {"text": "This is a promotion email to get discount"}
+    response = client.post("/predict", json=input_data)
     assert response.status_code == 200
     assert response.json() == {"prediction": "Spam"}
 
 
+def test_predict_empty_input(client):
+    input_data = {"text": ""}
+    response = client.post("/predict", json=input_data)
+    assert response.status_code == 400
+    assert response.json() == {"detail": "Empty input text"}
 
+
+def test_unsupported_http_method(client):
+    response = client.put("/predict")
+    assert response.status_code == 405
+
+
+def test_missing_required_field(client):
+    input_data = {"wrong_field": "This is a test"}
+    response = client.post("/predict", json=input_data)
+    assert response.status_code == 422
 
 
 if __name__ == "__main__":
