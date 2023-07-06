@@ -1,0 +1,5 @@
+site_name: Machine Learning Detection Spam
+nav:
+  - Home: index.md
+  - about: about.md
+theme: readthedocs
