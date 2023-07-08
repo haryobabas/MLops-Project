@@ -35,18 +35,16 @@ After training and evaluating our model, we achieved an accuracy of 98% on the t
 # Format Message for Predict via API
 
 Format message that API could read is JSON format, in detail like this :
-'''json
+
 {
 "text": "(Value of message)"
 }
-'''
+
 the user of API could input the text email that want to predict in (value of message), example like this:
 
-'''json
 {
 "text": "(This is a promotion email to get discount)"
 }
-'''
 
 # Format Response from API
 
