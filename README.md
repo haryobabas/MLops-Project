@@ -20,19 +20,15 @@ In this project we use Naive Bayes library from sklearn, especially MultiNomialN
 
 we use classification report include (Precision, Recall, F1-Score) to evaluation this model, and we get score :
 
-'''
+                    precision           recall          f1-score        support
 
-precision recall f1-score support
-
-0 0.99 0.98 0.99 991
-1 0.87 0.93 0.90 124
+    0               0.99                0.98            0.99               991
+    1               0.87                0.93            0.90               124
 
     accuracy                           0.98      1115
 
-macro avg 0.93 0.96 0.94 1115
-weighted avg 0.98 0.98 0.98 1115
-
-'''
+    macro avg       0.93                0.96           0.94                1115
+    weighted avg    0.98                0.98           0.98                1115
 
 After training and evaluating our model, we achieved an accuracy of 98% on the test set. The precision and recall values for spam detection were 0.87 and 0.93, respectively. These results indicate that our model effectively identifies spam emails while minimizing false positives.
 
