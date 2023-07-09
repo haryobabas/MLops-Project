@@ -57,3 +57,5 @@ currently for response API could divide by 3:
 # Conclusion and Future Work
 
 In this project, we successfully developed a machine learning model for spam detection. However, there is still room for improvement. In the future, we plan to explore more advanced techniques such as deep learning models and ensemble methods to further enhance the accuracy and robustness of our spam detection system.
+
+for report please go to my medium[Medium](https://medium.com/@haryo.bbas1/spam-ham-detection-using-naive-bayes-6b56dd532f70)
